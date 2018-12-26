@@ -1,0 +1,11 @@
+syntax = "proto2";
+
+package tutorial;
+
+option java_package = "com.tracholar.web.protobuf";
+option java_outer_classname = "NetData";
+
+message netdata {
+    required int32 id = 1;
+    optional bytes data = 2;
+}

@@ -5,6 +5,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
+import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -22,8 +24,6 @@ import java.util.Arrays;
  */
 
 @SpringBootApplication
-@RestController
-//@EnableAutoConfiguration
 public class TestWebDemo {
     @RequestMapping("/")
     public ModelAndView index() {
@@ -34,8 +34,9 @@ public class TestWebDemo {
 
     @RequestMapping("/test")
     public String test(){
-        InputStream is = getClass().getResourceAsStream("/static/index.html");
-        IOUtils
+            InputStream is = getClass().getResourceAsStream("/static/index.html");
+            return "";
+
     }
 
     @RequestMapping("/reset")
@@ -71,5 +72,11 @@ public class TestWebDemo {
                 }
             }
         };
+    }
+    @Bean
+    public EmbeddedServletContainerFactory servletContainer() {
+        TomcatEmbeddedServletContainerFactory factory =
+                new TomcatEmbeddedServletContainerFactory();
+        return factory;
     }
 }

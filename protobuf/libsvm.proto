@@ -1,0 +1,22 @@
+syntax = "proto2";
+
+package tutorial;
+
+option java_package = "com.tracholar.protobuf";
+option java_outer_classname = "Libsvm";
+
+
+message LabelPoint {
+    message Point {
+        required int32 x = 1; // idx
+        required float y = 2; // value
+        optional int32 f = 3; // field
+    }
+    repeated Point feature = 1;
+    optional float label = 2;
+    optional string rowid = 3;
+}
+
+message DataSet {
+    repeated LabelPoint lp = 1;
+}
