@@ -21,8 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloWorldClient {
     private HelloWorldServer.Client client;
 
-    public HelloWorldClient() throws Exception{
-        TTransport transport = new TSocket("localhost",  HelloWorldServerThread.port);
+    public HelloWorldClient() throws Exception {
+        this("localhost", HelloWorldServerThread.port);
+    }
+    public HelloWorldClient(String host, int port) throws Exception{
+        TTransport transport = new TSocket(host,  port);
         transport.open();
 
         TProtocol protocol = new TBinaryProtocol(transport);
@@ -32,5 +35,12 @@ public class HelloWorldClient {
     @RequestMapping("/hello")
     public String sayHi(@RequestParam(name = "name", defaultValue = "world") String name) throws Exception{
         return client.call(name);
+    }
+
+    public static void main(String[] args) throws Exception {
+        if(args.length == 2){
+            HelloWorldClient client = new HelloWorldClient(args[0], Integer.parseInt(args[1]));
+            System.out.println(client.sayHi("world"));
+        }
     }
 }
