@@ -2,6 +2,7 @@ package com.tracholar.web.demo;
 
 import com.tracholar.protobuf.Libsvm;
 
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Random;
@@ -30,6 +31,7 @@ public class TestLibsvm {
         Libsvm.DataSet dataset = dataSet.build();
         try {
             dataset.writeTo(new FileOutputStream("train.data"));
+
         }catch (IOException e){
             e.printStackTrace();
         }

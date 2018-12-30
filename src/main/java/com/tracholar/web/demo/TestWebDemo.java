@@ -3,15 +3,12 @@ package com.tracholar.web.demo;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
@@ -28,13 +25,13 @@ public class TestWebDemo {
     @RequestMapping("/")
     public ModelAndView index() {
         ModelAndView indexView = new ModelAndView();
-        indexView.setViewName("index.html");
+        indexView.setViewName("index");
         return indexView;
     }
 
     @RequestMapping("/test")
     public String test(){
-            InputStream is = getClass().getResourceAsStream("/static/index.html");
+            InputStream is = getClass().getResourceAsStream("/templates/index.html");
             return "";
 
     }

@@ -23,4 +23,9 @@
     <bean id = "studentTmp" class="com.tracholar.web.dao.StudentJDBCTemplate">
         <property name="dataSource" ref="dataSource" />
     </bean>
+
+    <bean id = "test_bean" class="com.tracholar.web.demo.BasicBean">
+        <property name="value" value="Hello Test Bean" />
+        <property name="id" value="9123213213" />
+    </bean>
 </beans>
