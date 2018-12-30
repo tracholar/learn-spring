@@ -14,6 +14,12 @@ from thrift.server import TServer
 
 import logging
 
+logging.basicConfig(level=logging.INFO,
+                    format='%(asctime)s %(filename)s[line:%(lineno)d] %(levelname)s %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S',
+                    )
+
+
 class HelloWorldHandler():
     def __init__(self):
         self.log = {}
