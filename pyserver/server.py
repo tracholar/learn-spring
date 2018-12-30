@@ -19,6 +19,7 @@ class HelloWorldHandler():
         self.log = {}
 
     def call(self, name):
+        logging.info("name = " + str(name))
         return "Hello, " + str(name)
 
 if __name__ == '__main__':
